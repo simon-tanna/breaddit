@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 
-function Login() {
+function Login({activateUser}) {
 	// create initial state for form fields
 	const initialFormData = {
-		user: "",
+		username: "",
 		password: "",
 	};
 	// set form data initial state invoking initialFormData
@@ -23,6 +23,7 @@ function Login() {
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		console.log(formData);
+        activateUser(formData.username);
         setFormData(initialFormData) // cleaning the form data displayed
 	};
 
@@ -33,9 +34,9 @@ function Login() {
 					<label>Username:</label>
 					<input
 						type="text"
-						name="user"
-						id="user"
-						value={formData.user}
+						name="username"
+						id="username"
+						value={formData.username}
 						onChange={handleFormData}
 					/>
 				</div>

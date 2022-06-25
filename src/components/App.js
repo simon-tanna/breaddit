@@ -8,6 +8,10 @@ import React, { useState } from "react";
 function App() {
 	const [loggedInUser, setLoggedInUser] = useState("");
 
+	const activateUser = (username) => {
+		setLoggedInUser(username)
+	}
+
 	return (
 		<div className="App">
 			<h1>Breaddit</h1>
@@ -15,7 +19,7 @@ function App() {
 			<Messages />
 			<Message />
 			<MessageForm />
-			<Login />
+			<Login activateUser={activateUser} />
 		</div>
 	);
 }
