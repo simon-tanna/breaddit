@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
-function Login({activateUser}) {
+function Login({ activateUser }) {
 	// create initial state for form fields
 	const initialFormData = {
 		username: "",
@@ -17,14 +17,12 @@ function Login({activateUser}) {
 		});
 	};
 
-	// useEffect(() => {});
-
 	// event handler for the form submission
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		console.log(formData);
-        activateUser(formData.username);
-        setFormData(initialFormData) // cleaning the form data displayed
+		activateUser(formData.username);
+		setFormData(initialFormData); // cleaning the form data displayed
 	};
 
 	return (

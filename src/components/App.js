@@ -9,13 +9,13 @@ function App() {
 	const [loggedInUser, setLoggedInUser] = useState("");
 
 	const activateUser = (username) => {
-		setLoggedInUser(username)
-	}
+		setLoggedInUser(username);
+	};
 
 	return (
 		<div className="App">
 			<h1>Breaddit</h1>
-			<Navigation loggedInUser={loggedInUser} />
+			<Navigation loggedInUser={loggedInUser} activateUser={activateUser} />
 			<Messages />
 			<Message />
 			<MessageForm />
