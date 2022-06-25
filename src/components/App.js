@@ -13,6 +13,16 @@ function App() {
 		setLoggedInUser(username);
 	};
 
+	const addMessage = (text, subject) => {
+		const message = {
+			subject: subject,
+			text: text,
+			username: loggedInUser,
+			id: messageList[0].id + 1,
+		};
+		setMessageList((messageList) => [message, ...messageList]);
+	};
+
 	useEffect(() => {
 		// API fetch to go here
 		setMessageList(seedMessages);
@@ -23,7 +33,7 @@ function App() {
 			<h1>Breaddit</h1>
 			<Navigation loggedInUser={loggedInUser} activateUser={activateUser} />
 			{!loggedInUser && <Login activateUser={activateUser} />}
-			{loggedInUser && <MessageForm />}
+			{loggedInUser && <MessageForm loggedInUser={loggedInUser} addMessage={addMessage} />}
 			<Messages messageList={messageList} />
 		</div>
 	);

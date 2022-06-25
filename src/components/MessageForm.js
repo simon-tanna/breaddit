@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function MessageForm({ loggedInUser }) {
+function MessageForm({ loggedInUser, addMessage }) {
 	const initialFormData = {
 		subject: "",
 		text: "",
@@ -19,6 +19,7 @@ function MessageForm({ loggedInUser }) {
 		if (formData.subject === "" || formData.text === "") {
 			return console.log("Please don't leave an empty field");
 		} else {
+			addMessage(formData.subject, formData.text);
 			return cleanMessageForm();
 		}
 	};
@@ -35,7 +36,7 @@ function MessageForm({ loggedInUser }) {
 						type="text"
 						name="subject"
 						id="subject"
-						placeholder="Add your subject..."
+						placeholder={`Add your subject ${loggedInUser}`}
 						value={formData.subject}
 						onChange={handleFormData}
 					/>
@@ -50,7 +51,7 @@ function MessageForm({ loggedInUser }) {
 						onChange={handleFormData}
 					/>
 				</div>
-				<input type="submit" value="Submit" />
+				<button type="submit">Submit</button>
 				<button onClick={cleanMessageForm}>Clear message fields</button>
 			</form>
 		</>
