@@ -4,7 +4,6 @@ import MessageForm from "./MessageForm";
 import Navigation from "./Navigation";
 import Login from "./Login";
 
-
 function App() {
 	return (
 		<div className="App">
