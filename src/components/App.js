@@ -12,6 +12,7 @@ import {
 } from "react-router-dom";
 import About from "./About";
 import NotFound from "./NotFound";
+import MessageDetail from "./MessageDetail";
 
 function App() {
 	const [loggedInUser, setLoggedInUser] = useState("");
@@ -53,7 +54,25 @@ function App() {
 						element={<Messages messageList={messageList} />}
 					/>
 					<Route path="/" element={<Navigate to="messages" replace />} />
+					<Route
+						path="messages/:messageId"
+						element={<MessageDetail messageList={messageList} />}
+					/>
 					<Route path="about" element={<About />} />
+					<Route path="login" element={<Login activateUser={activateUser} />} />
+					<Route
+						path="messages/new"
+						element={
+							loggedInUser ? (
+								<MessageForm
+									loggedInUser={loggedInUser}
+									addMessage={addMessage}
+								/>
+							) : (
+								<Navigate to="/login" replace />
+							)
+						}
+					/>
 					<Route path="*" element={<NotFound />} />
 				</Routes>
 			</Router>

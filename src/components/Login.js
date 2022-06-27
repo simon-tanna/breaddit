@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Login({ activateUser }) {
 	// create initial state for form fields
@@ -6,6 +7,8 @@ function Login({ activateUser }) {
 		username: "",
 		password: "",
 	};
+
+	const navigate = useNavigate()
 	// set form data initial state invoking initialFormData
 	const [formData, setFormData] = useState(initialFormData);
 
@@ -23,6 +26,7 @@ function Login({ activateUser }) {
 		console.log(formData);
 		activateUser(formData.username);
 		setFormData(initialFormData); // cleaning the form data displayed
+		navigate("/messages");
 	};
 
 	return (

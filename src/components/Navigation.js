@@ -1,10 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Navigation({ loggedInUser, activateUser }) {
+
+	// Use navigate hook has to be called outside of the logout function
+	const navigate = useNavigate() 
 	const logOut = (event) => {
 		event.preventDefault();
 		activateUser("");
+		navigate("/messages")
 	};
 
 	return (
@@ -13,6 +17,7 @@ function Navigation({ loggedInUser, activateUser }) {
 			<Link to="/about">About</Link>
 			{loggedInUser ? (
 				<>
+					<Link to="/messages/new">New Message</Link>
 					<Link to="/messages" onClick={logOut}>
 						Log Out
 					</Link>
