@@ -4,7 +4,12 @@ import Navigation from "./Navigation";
 import Login from "./Login";
 import React, { useEffect, useState } from "react";
 import seedMessages from "../data/message-seed.json";
-import { BrowserRouter as Router, Navigate, Route, Routes } from "react-router-dom";
+import {
+	BrowserRouter as Router,
+	Navigate,
+	Route,
+	Routes,
+} from "react-router-dom";
 import About from "./About";
 import NotFound from "./NotFound";
 
@@ -34,16 +39,20 @@ function App() {
 	return (
 		<div className="App">
 			<h1>Breaddit</h1>
-			<Navigation loggedInUser={loggedInUser} activateUser={activateUser} />
+
 			{/* {!loggedInUser && <Login activateUser={activateUser} />}
 			{loggedInUser && <MessageForm loggedInUser={loggedInUser} addMessage={addMessage} />}
 			<Messages messageList={messageList} /> */}
 
 			{/* browser router wraps all the components in the browser router  */}
 			<Router>
+				<Navigation loggedInUser={loggedInUser} activateUser={activateUser} />
 				<Routes>
-					<Route path="messages" element={<Messages messageList={messageList} />} />
-					<Route path="/" element={<Navigate to="messages" replace/>} />
+					<Route
+						path="messages"
+						element={<Messages messageList={messageList} />}
+					/>
+					<Route path="/" element={<Navigate to="messages" replace />} />
 					<Route path="about" element={<About />} />
 					<Route path="*" element={<NotFound />} />
 				</Routes>

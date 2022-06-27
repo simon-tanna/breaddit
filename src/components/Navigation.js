@@ -9,19 +9,19 @@ function Navigation({ loggedInUser, activateUser }) {
 
 	return (
 		<nav>
-			<Link href="/">Home</Link>
-			<Link href="/">About</Link>
+			<Link to="/messages">Home</Link>
+			<Link to="/about">About</Link>
 			{loggedInUser ? (
 				<>
-					<Link href="/" onClick={logOut}>
+					<Link to="/messages" onClick={logOut}>
 						Log Out
 					</Link>
 					{loggedInUser}
 				</>
 			) : (
 				<>
-					<Link href="/">Login</Link>
-					<Link href="/">Sign Up</Link>
+					<Link to="/login">Login</Link>
+					<Link to="/login">Sign Up</Link>
 				</>
 			)}
 		</nav>
