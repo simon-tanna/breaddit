@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Navigation({ loggedInUser, activateUser }) {
 	const logOut = (event) => {
@@ -8,19 +9,19 @@ function Navigation({ loggedInUser, activateUser }) {
 
 	return (
 		<nav>
-			<a href="/">Home</a>
-			<a href="/">About</a>
+			<Link href="/">Home</Link>
+			<Link href="/">About</Link>
 			{loggedInUser ? (
 				<>
-					<a href="/" onClick={logOut}>
+					<Link href="/" onClick={logOut}>
 						Log Out
-					</a>
+					</Link>
 					{loggedInUser}
 				</>
 			) : (
 				<>
-					<a href="/">Login</a>
-					<a href="/">Sign Up</a>
+					<Link href="/">Login</Link>
+					<Link href="/">Sign Up</Link>
 				</>
 			)}
 		</nav>
