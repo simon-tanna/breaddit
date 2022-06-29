@@ -49,10 +49,9 @@ function App() {
 			<Router>
 				<Navigation loggedInUser={loggedInUser} activateUser={activateUser} />
 				<Routes>
-					<Route
-						path="messages"
-						element={<Messages messageList={messageList} />}
-					>
+					<Route path="messages">
+						General route created with nested routes underneath
+						<Route index element={<Messages messageList={messageList} />} />
 						<Route
 							path=":messageId"
 							element={<MessageDetail messageList={messageList} />}
