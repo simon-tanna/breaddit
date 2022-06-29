@@ -52,27 +52,28 @@ function App() {
 					<Route
 						path="messages"
 						element={<Messages messageList={messageList} />}
-					/>
+					>
+						<Route
+							path=":messageId"
+							element={<MessageDetail messageList={messageList} />}
+						/>
+						<Route
+							path="new"
+							element={
+								loggedInUser ? (
+									<MessageForm
+										loggedInUser={loggedInUser}
+										addMessage={addMessage}
+									/>
+								) : (
+									<Navigate to="/login" replace />
+								)
+							}
+						/>
+					</Route>
 					<Route path="/" element={<Navigate to="messages" replace />} />
-					<Route
-						path="messages/:messageId"
-						element={<MessageDetail messageList={messageList} />}
-					/>
 					<Route path="about" element={<About />} />
 					<Route path="login" element={<Login activateUser={activateUser} />} />
-					<Route
-						path="messages/new"
-						element={
-							loggedInUser ? (
-								<MessageForm
-									loggedInUser={loggedInUser}
-									addMessage={addMessage}
-								/>
-							) : (
-								<Navigate to="/login" replace />
-							)
-						}
-					/>
 					<Route path="*" element={<NotFound />} />
 				</Routes>
 			</Router>
