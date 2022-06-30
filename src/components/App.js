@@ -15,6 +15,10 @@ import NotFound from "./NotFound";
 import MessageDetail from "./MessageDetail";
 
 function App() {
+
+	// implement reducer function
+	
+
 	const [loggedInUser, setLoggedInUser] = useState("");
 	const [messageList, setMessageList] = useState([]);
 
