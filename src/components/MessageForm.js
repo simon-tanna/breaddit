@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function MessageForm({ loggedInUser, addMessage }) {
 	const initialFormData = {
 		subject: "",
 		text: "",
 	};
+	const navigate = useNavigate();
 	const [formData, setFormData] = useState(initialFormData);
 	const handleFormData = (event) => {
 		setFormData({
@@ -20,7 +22,8 @@ function MessageForm({ loggedInUser, addMessage }) {
 			return console.log("Please don't leave an empty field");
 		} else {
 			addMessage(formData.subject, formData.text);
-			return cleanMessageForm();
+			cleanMessageForm();
+			navigate("/messages");
 		}
 	};
 
