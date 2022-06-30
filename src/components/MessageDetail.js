@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 function MessageDetail({ messageList }) {
 	const params = useParams();
@@ -11,10 +11,19 @@ function MessageDetail({ messageList }) {
 	const message = getMessage(params.messageId);
 
 	return (
-		<>	
-			<h4>{`Subject: ${message.subject}`}</h4>
-			<p>{message.text}</p>
-			<p>{message.username}</p>
+		<>
+			{message ? (
+				<>
+					<h4>{`Subject: ${message.subject}`}</h4>
+					<p>{message.text}</p>
+					<p>{message.username}</p>
+				</>
+			) : (
+				<>
+					<p>Message Not Found</p>
+					<Link to="/messages">Back to messages</Link>
+				</>
+			)}
 		</>
 	);
 }
