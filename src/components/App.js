@@ -44,6 +44,7 @@ function App() {
 		setMessageList(seedMessages);
 	}, []);
 
+
 	return (
 		<div className="App">
 			<h1>Breaddit</h1>

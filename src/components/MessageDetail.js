@@ -10,6 +10,8 @@ function MessageDetail({ messageList }) {
 
 	const message = getMessage(params.messageId);
 
+	console.log(message)
+
 	return (
 		<>
 			{message ? (
