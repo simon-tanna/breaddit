@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 
 function MessageDetail({ messageList }) {
 	const params = useParams();
+	console.log(params)
 
 	const getMessage = (id) => {
 		return messageList.find((message) => message.id === parseInt(id));
