@@ -23,7 +23,7 @@ function Login({ activateUser }) {
 	// event handler for the form submission
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		console.log(formData);
+		// console.log(formData);
 		activateUser(formData.username);
 		setFormData(initialFormData); // cleaning the form data displayed
 		navigate("/messages");

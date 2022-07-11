@@ -2,7 +2,7 @@ import Messages from "./Messages";
 import MessageForm from "./MessageForm";
 import Navigation from "./Navigation";
 import Login from "./Login";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useReducer } from "react";
 import seedMessages from "../data/message-seed.json";
 import {
 	BrowserRouter as Router,
@@ -13,13 +13,29 @@ import {
 import About from "./About";
 import NotFound from "./NotFound";
 import MessageDetail from "./MessageDetail";
+import { reducer } from "../utils/reducer";
 
 function App() {
-	const [loggedInUser, setLoggedInUser] = useState("");
-	const [messageList, setMessageList] = useState([]);
+	// implement reducer function
+	const initialState = {
+		messageList: [],
+		loggedInUser: "",
+	};
+
+	// reducer is executed when
+	// state returns array with 2 elements- store (the name for the state) and dispatch (the function that triggers the reducer function, it's argument is action)
+	const [store, dispatch] = useReducer(reducer, initialState);
+	const { messageList, loggedInUser } = store;
+
+	// const [loggedInUser, setLoggedInUser] = useState("");
+	// const [messageList, setMessageList] = useState([]);
 
 	const activateUser = (username) => {
-		setLoggedInUser(username);
+		// setLoggedInUser(username);
+		dispatch({
+			type: "setLoggedInUser",
+			data: username
+		})
 	};
 
 	const addMessage = (text, subject) => {
@@ -29,7 +45,11 @@ function App() {
 			username: loggedInUser,
 			id: nextId(messageList),
 		};
-		setMessageList((messageList) => [message, ...messageList]);
+		dispatch({
+			type: "addMessage",
+			data: message,
+		});
+		// setMessageList((messageList) => [message, ...messageList]);
 	};
 
 	const nextId = (data) => {
@@ -41,7 +61,11 @@ function App() {
 
 	useEffect(() => {
 		// API fetch to go here
-		setMessageList(seedMessages);
+		// setMessageList(seedMessages);
+		dispatch({
+			type: "setMessageList",
+			data: seedMessages,
+		});
 	}, []);
 
 	return (
