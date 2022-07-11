@@ -30,6 +30,13 @@ export const reducer = (state, action) => {
 				messageList: [action.data, ...state.messageList],
 			};
 		}
+		case "setLoggedInUser": {
+			// updatges the loggedinuser value
+			return {
+				...state,
+				loggedInUser: action.data,
+			};
+		}
 		default:
 			return state;
 	}

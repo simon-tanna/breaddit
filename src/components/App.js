@@ -2,7 +2,7 @@ import Messages from "./Messages";
 import MessageForm from "./MessageForm";
 import Navigation from "./Navigation";
 import Login from "./Login";
-import React, { useEffect, useReducer, useState } from "react";
+import React, { useEffect, useReducer } from "react";
 import seedMessages from "../data/message-seed.json";
 import {
 	BrowserRouter as Router,
@@ -31,7 +31,11 @@ function App() {
 	// const [messageList, setMessageList] = useState([]);
 
 	const activateUser = (username) => {
-		setLoggedInUser(username);
+		// setLoggedInUser(username);
+		dispatch({
+			type: "setLoggedInUser",
+			data: username
+		})
 	};
 
 	const addMessage = (text, subject) => {
